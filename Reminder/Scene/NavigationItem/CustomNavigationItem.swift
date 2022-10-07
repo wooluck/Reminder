@@ -12,19 +12,20 @@ import SnapKit
 import Then
 
 class CustomNavigationItem: UIView {
+    var disposeBag = DisposeBag()
     
     private var leftButtonText: String
     private var rightButtonText: String
     private var navigationTitleText: String
     
-    private lazy var leftButton = UIButton().then {
+    lazy var leftButton = UIButton().then {
         $0.setTitle(leftButtonText, for: .normal)
         $0.setTitleColor(UIColor(red: 80 / 255, green: 152 / 255, blue: 250 / 255, alpha: 1), for: .normal)
     }
     
-    private lazy var rightButton = UIButton().then {
+    lazy var rightButton = UIButton().then {
         $0.setTitle(rightButtonText, for: .normal)
-        $0.setTitleColor(UIColor(red: 80 / 255, green: 152 / 255, blue: 250 / 255, alpha: 1), for: .normal)
+        $0.isEnabled = false
     }
 
     private lazy var navigationTitle = UILabel().then {
@@ -41,6 +42,7 @@ class CustomNavigationItem: UIView {
         self.navigationTitleText = navigationTitleText
         super.init(frame: .zero)
         setupLayout()
+        bindView()
         backgroundColor = .green
     }
     
@@ -52,6 +54,13 @@ class CustomNavigationItem: UIView {
 }
 
 extension CustomNavigationItem {
+    private func bindView() {
+//        leftButton.rx.tap
+//            .subscribe(onNext: {
+//                print("눌림?")
+//            }).disposed(by: disposeBag)
+    }
+    
     private func setupLayout() {
         addSubviews([leftButton, navigationTitle, rightButton])
         leftButton.snp.makeConstraints {

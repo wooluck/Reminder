@@ -87,6 +87,13 @@
 			path = NavigationItem;
 			sourceTree = "<group>";
 		};
+		C3BB422128EFFDA800E94935 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		C3C2EF6D28ED431D002C2F79 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +179,7 @@
 				C3C2EF9628ED803E002C2F79 /* TableView */,
 				C3C2EF7D28ED431D002C2F79 /* ViewController.swift */,
 				C3C2EFA328EE9C8A002C2F79 /* ListAddViewController.swift */,
+				C3BB422128EFFDA800E94935 /* New Group */,
 				C3C2EFA528EE9F27002C2F79 /* NewReminderAddViewController.swift */,
 			);
 			path = Scene;
