@@ -11,11 +11,21 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+struct List {
+    let title: String
+//    let contentTitle: String
+//    let contentSubTitle: String
+}
+
+//let ListDummy: [List] = [List(title: <#T##String#>, contentTitle: <#T##String#>, contentSubTitle: <#T##String#>)]
+
+let ListDummy: [List] = [List(title: "미리 알림")]
+
 class ViewController: UIViewController {
     
     var disposeBag = DisposeBag()
-    let tableDataRelay = BehaviorRelay<[TableList]>(value: [])
-    // TableList.init(title: "더미 데이터")
+//    let tableDataRelay = BehaviorRelay<[TableList]>(value: [])
+    let tableData = Observable.of(ListDummy.map { $0 })
     
     private lazy var searchBar = CustomSearchBar()
     
@@ -54,19 +64,24 @@ class ViewController: UIViewController {
         navigationSetup()
         setupLayout()
         bindView()
+        bindTableView()
+        
+
     }
 }
 
 //MARK: - extension
 extension ViewController {
     private func bindTableView() {
-        tableDataRelay.asDriver()
-            .drive(tableView.rx.items) { table, row, item in
-                guard let cell = table.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier) as? CustomTableViewCell else { return UITableViewCell()}
-                return cell
-            }
+        tableData.bind(to: tableView.rx.items) { tableView, row, element in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
+            cell.textInCell.text = element.title
+//            cell.numberInCell = "1"
+            
+            return cell
+        }.disposed(by: disposeBag)
     }
-    
+
     private func bindView() {
         self.bottomRightButton.rx.tap
             .subscribe(onNext: {
@@ -77,6 +92,13 @@ extension ViewController {
             .subscribe(onNext: {
                 self.present(NewReminderAddViewController(), animated: true)
             }).disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .subscribe { [weak self] indexPath in
+                //셀 선택 상태 제거
+                self?.tableView.deselectRow(at: indexPath, animated: true)
+                
+            }.disposed(by: disposeBag)
     }
     
     private func navigationSetup() {

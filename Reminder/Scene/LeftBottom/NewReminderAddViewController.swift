@@ -27,7 +27,7 @@ class NewReminderAddViewController: UIViewController {
     
     private lazy var titleText = UITextField().then {
         $0.placeholder = "제목"
-        $0.backgroundColor = .blue
+        $0.backgroundColor = .white
     }
     
     private lazy var contentText = UITextView().then {
@@ -35,17 +35,18 @@ class NewReminderAddViewController: UIViewController {
     }
     
     private lazy var detailTableView = UITableView().then {
-        $0.backgroundColor = .green
+        $0.backgroundColor = .white
     }
     
     private lazy var listTableView = UITableView().then {
-        $0.backgroundColor = .brown
+        $0.backgroundColor = .white
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLayout()
+        bindTableView()
     }
 }
 
@@ -55,7 +56,15 @@ extension NewReminderAddViewController {
         detail.bind(to: detailTableView.rx.items) { (tableView: UITableView, index: Int, element: String) in
             let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
             cell.textLabel?.text = element
-            
+            print("element : \(element)")
+            return cell
+        }.disposed(by: disposeBag)
+        
+        let list = Observable.of(["목록"])
+        list.bind(to: listTableView.rx.items) { (tableView: UITableView, index: Int, element: String) in
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+            cell.textLabel?.text = element
+            print("element : \(element)")
             return cell
         }.disposed(by: disposeBag)
     }

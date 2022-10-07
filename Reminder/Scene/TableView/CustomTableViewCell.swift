@@ -15,11 +15,11 @@ class CustomTableViewCell: UITableViewCell {
         $0.image = UIImage(systemName: "list.star")
     }
     
-    private lazy var textInCell = UILabel().then {
+    lazy var textInCell = UILabel().then {
         $0.font = .systemFont(ofSize: 20, weight: .bold)
     }
     
-    private lazy var numberInCell = UILabel().then {
+    lazy var numberInCell = UILabel().then {
         $0.font = .systemFont(ofSize: 20, weight: .bold)
     }
     
