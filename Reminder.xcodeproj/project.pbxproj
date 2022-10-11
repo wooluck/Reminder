@@ -10,11 +10,12 @@
 		2FFFDEC29AD9AE86782419EB /* Pods_Reminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731BB4E5D3A6FDD6806C5AEB /* Pods_Reminder.framework */; };
 		C3BB421C28EEB22900E94935 /* CustomNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB421B28EEB22900E94935 /* CustomNavigationItem.swift */; };
 		C3BB421E28EEC08800E94935 /* CustomColorSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB421D28EEC08800E94935 /* CustomColorSelectButton.swift */; };
-		C3BB422428F012F000E94935 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB422328F012F000E94935 /* DetailViewController.swift */; };
-		C3BB422628F0130900E94935 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB422528F0130900E94935 /* PriorityViewController.swift */; };
-		C3BB422828F0133200E94935 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB422728F0133200E94935 /* ListViewController.swift */; };
+		C3BB422428F012F000E94935 /* NewReminderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB422328F012F000E94935 /* NewReminderDetailViewController.swift */; };
+		C3BB422828F0133200E94935 /* NewReminderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB422728F0133200E94935 /* NewReminderListViewController.swift */; };
 		C3BB422D28F0231A00E94935 /* CustomDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB422C28F0231A00E94935 /* CustomDetailTableViewCell.swift */; };
 		C3BB422F28F0236400E94935 /* CustomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB422E28F0236400E94935 /* CustomDetailViewController.swift */; };
+		C3C23A5D28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A5C28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift */; };
+		C3C23A6028F5611900C4FB54 /* DetailPriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A5F28F5611900C4FB54 /* DetailPriorityViewController.swift */; };
 		C3C2EF7A28ED431D002C2F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2EF7928ED431D002C2F79 /* AppDelegate.swift */; };
 		C3C2EF7C28ED431D002C2F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2EF7B28ED431D002C2F79 /* SceneDelegate.swift */; };
 		C3C2EF7E28ED431D002C2F79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2EF7D28ED431D002C2F79 /* ViewController.swift */; };
@@ -34,11 +35,12 @@
 		731BB4E5D3A6FDD6806C5AEB /* Pods_Reminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BB421B28EEB22900E94935 /* CustomNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItem.swift; sourceTree = "<group>"; };
 		C3BB421D28EEC08800E94935 /* CustomColorSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSelectButton.swift; sourceTree = "<group>"; };
-		C3BB422328F012F000E94935 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		C3BB422528F0130900E94935 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
-		C3BB422728F0133200E94935 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		C3BB422328F012F000E94935 /* NewReminderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderDetailViewController.swift; sourceTree = "<group>"; };
+		C3BB422728F0133200E94935 /* NewReminderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderListViewController.swift; sourceTree = "<group>"; };
 		C3BB422C28F0231A00E94935 /* CustomDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C3BB422E28F0236400E94935 /* CustomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailViewController.swift; sourceTree = "<group>"; };
+		C3C23A5C28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderAddListTableViewCell.swift; sourceTree = "<group>"; };
+		C3C23A5F28F5611900C4FB54 /* DetailPriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPriorityViewController.swift; sourceTree = "<group>"; };
 		C3C2EF7628ED431D002C2F79 /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C2EF7928ED431D002C2F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3C2EF7B28ED431D002C2F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,31 +97,44 @@
 			path = NavigationItem;
 			sourceTree = "<group>";
 		};
-		C3BB422128EFFDA800E94935 /* LeftBottom */ = {
+		C3BB422128EFFDA800E94935 /* LeftBottomBtn */ = {
 			isa = PBXGroup;
 			children = (
 				C3C2EFA528EE9F27002C2F79 /* NewReminderAddViewController.swift */,
-				C3BB422328F012F000E94935 /* DetailViewController.swift */,
-				C3BB422528F0130900E94935 /* PriorityViewController.swift */,
-				C3BB422728F0133200E94935 /* ListViewController.swift */,
+				C3C23A5C28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift */,
+				C3BB422328F012F000E94935 /* NewReminderDetailViewController.swift */,
+				C3C23A5E28F559BD00C4FB54 /* Into */,
+				C3BB422728F0133200E94935 /* NewReminderListViewController.swift */,
 			);
-			path = LeftBottom;
+			path = LeftBottomBtn;
 			sourceTree = "<group>";
 		};
-		C3BB422228F012B700E94935 /* RightBottom */ = {
+		C3BB422228F012B700E94935 /* RightBottomBtn */ = {
 			isa = PBXGroup;
 			children = (
 				C3C2EFA328EE9C8A002C2F79 /* ListAddViewController.swift */,
 			);
-			path = RightBottom;
+			path = RightBottomBtn;
 			sourceTree = "<group>";
 		};
 		C3BB422928F01AD900E94935 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C3C2EF7D28ED431D002C2F79 /* ViewController.swift */,
+				C3C2EF9928ED868F002C2F79 /* CustomTableViewCell.swift */,
+				C3C2EF9628ED803E002C2F79 /* MainDetailViewController */,
+				C3BB422128EFFDA800E94935 /* LeftBottomBtn */,
+				C3BB422228F012B700E94935 /* RightBottomBtn */,
 			);
 			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		C3C23A5E28F559BD00C4FB54 /* Into */ = {
+			isa = PBXGroup;
+			children = (
+				C3C23A5F28F5611900C4FB54 /* DetailPriorityViewController.swift */,
+			);
+			path = Into;
 			sourceTree = "<group>";
 		};
 		C3C2EF6D28ED431D002C2F79 = {
@@ -181,14 +196,13 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
-		C3C2EF9628ED803E002C2F79 /* TableView */ = {
+		C3C2EF9628ED803E002C2F79 /* MainDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C3C2EF9928ED868F002C2F79 /* CustomTableViewCell.swift */,
 				C3BB422E28F0236400E94935 /* CustomDetailViewController.swift */,
 				C3BB422C28F0231A00E94935 /* CustomDetailTableViewCell.swift */,
 			);
-			path = TableView;
+			path = MainDetailViewController;
 			sourceTree = "<group>";
 		};
 		C3C2EF9B28EE8956002C2F79 /* Model */ = {
@@ -205,10 +219,7 @@
 				C3BB421A28EEB1D400E94935 /* NavigationItem */,
 				C3C2EF9028ED6348002C2F79 /* SearchBar */,
 				C3C2EF9328ED6BE5002C2F79 /* Button */,
-				C3C2EF9628ED803E002C2F79 /* TableView */,
 				C3BB422928F01AD900E94935 /* MainViewController */,
-				C3BB422128EFFDA800E94935 /* LeftBottom */,
-				C3BB422228F012B700E94935 /* RightBottom */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -328,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C23A5D28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift in Sources */,
 				C3C2EF8F28ED4C33002C2F79 /* UIView.swift in Sources */,
 				C3C2EF7E28ED431D002C2F79 /* ViewController.swift in Sources */,
 				C3C2EFA428EE9C8A002C2F79 /* ListAddViewController.swift in Sources */,
@@ -339,12 +351,12 @@
 				C3C2EFA628EE9F27002C2F79 /* NewReminderAddViewController.swift in Sources */,
 				C3C2EF7A28ED431D002C2F79 /* AppDelegate.swift in Sources */,
 				C3C2EFA128EE89EE002C2F79 /* TableList.swift in Sources */,
+				C3C23A6028F5611900C4FB54 /* DetailPriorityViewController.swift in Sources */,
 				C3BB422F28F0236400E94935 /* CustomDetailViewController.swift in Sources */,
 				C3C2EF7C28ED431D002C2F79 /* SceneDelegate.swift in Sources */,
 				C3BB421E28EEC08800E94935 /* CustomColorSelectButton.swift in Sources */,
-				C3BB422428F012F000E94935 /* DetailViewController.swift in Sources */,
-				C3BB422828F0133200E94935 /* ListViewController.swift in Sources */,
-				C3BB422628F0130900E94935 /* PriorityViewController.swift in Sources */,
+				C3BB422428F012F000E94935 /* NewReminderDetailViewController.swift in Sources */,
+				C3BB422828F0133200E94935 /* NewReminderListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

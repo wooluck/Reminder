@@ -9,4 +9,5 @@ import Foundation
 
 struct TableList {
     var title: String
+    var number: Int
 }

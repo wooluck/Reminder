@@ -55,10 +55,10 @@ class CustomNavigationItem: UIView {
 
 extension CustomNavigationItem {
     private func bindView() {
-//        leftButton.rx.tap
-//            .subscribe(onNext: {
-//                print("눌림?")
-//            }).disposed(by: disposeBag)
+        leftButton.rx.tap
+            .subscribe(onNext: {
+                print("눌림?")
+            }).disposed(by: disposeBag)
     }
     
     private func setupLayout() {

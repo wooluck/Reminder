@@ -47,6 +47,7 @@ class CustomButton: UIButton {
     //        backgroundColor = .white
     //    }
     
+    // MARK: - init()
     init(image: String, text: String, number: String, imageColor: String) {
         
         self.image = image
@@ -60,17 +61,18 @@ class CustomButton: UIButton {
         backgroundColor = .white
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override var isHighlighted: Bool {
-//        didSet {
-//            backgroundColor = isHighlighted ? .red : .blue
-//        }
-//    }
-    
+    //    override var isHighlighted: Bool {
+    //        didSet {
+    //            backgroundColor = isHighlighted ? .red : .blue
+    //        }
+    //    }
+}
+// MARK: - extension
+extension CustomButton {
     func setupView() {
         layer.cornerRadius = 10
     }

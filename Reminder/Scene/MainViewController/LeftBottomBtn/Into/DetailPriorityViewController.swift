@@ -1,14 +1,15 @@
 //
-//  DetailViewController.swift
+//  DetailPriorityViewController.swift
 //  Reminder
 //
-//  Created by pineone on 2022/10/07.
+//  Created by pineone on 2022/10/11.
 //
 
 import Foundation
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailPriorityViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -95,14 +95,12 @@ class ListAddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
         bindView()
         setupLayout()
-        
     }
 }
 
-// MARK: - Extension
+    // MARK: - extension
 extension ListAddViewController {
     private func bindView() {
         redButton.rx.tap
@@ -150,7 +148,6 @@ extension ListAddViewController {
         customNavigationItem.leftButton.rx.tap
             .subscribe(onNext: {
                 self.navigationController?.popViewController(animated: true)
-                print("눌림?")
             }).disposed(by: disposeBag)
         
     }
@@ -161,6 +158,7 @@ extension ListAddViewController {
             $0.top.equalToSuperview().inset(15)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(35)
         }
         colorImageView.snp.makeConstraints {
             $0.top.equalTo(customNavigationItem.snp.bottom).inset(-70)

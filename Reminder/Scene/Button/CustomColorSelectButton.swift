@@ -13,11 +13,11 @@ import Then
 
 class CustomColorSelectButton: UIButton {
     
+    // MARK: - init()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
         setupLayout()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -25,14 +25,13 @@ class CustomColorSelectButton: UIButton {
     }
 }
 
+    // MARK: - extension
 extension CustomColorSelectButton {
     private func setupView() {
-//        backgroundColor = .red
         layer.cornerRadius = 20
         layer.borderWidth = 3
         layer.borderColor = UIColor.systemGray4.cgColor
         layer.masksToBounds = true
-//        setTitleColor(.red, for: .normal)
     }
     
     private func setupLayout() {
