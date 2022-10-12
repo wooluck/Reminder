@@ -19,6 +19,7 @@ struct NewReminderAddList {
 
 let NewReminderAddDummy: [NewReminderAddList] = [NewReminderAddList(leftText: "목록", rightText: "미리 알림")]
 let NewReminderDetailDummy: [NewReminderAddList] = [NewReminderAddList(leftText: "세부사항")]
+
 class NewReminderAddViewController: UIViewController {
     var disposeBag = DisposeBag()
     
@@ -36,10 +37,12 @@ class NewReminderAddViewController: UIViewController {
     }
     
     private lazy var titleText = UITextField().then {
-        $0.placeholder = "     제목"
+        $0.placeholder = "제목"
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 10
         $0.borderStyle = .none
+        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 0))
+        $0.leftViewMode = .always
     }
     
     private lazy var underLine = UIView().then {
@@ -47,11 +50,12 @@ class NewReminderAddViewController: UIViewController {
     }
     
     private lazy var contentText = UITextView().then {
-        $0.text = "    메모"
+        $0.text = "메모"
         $0.textColor = .systemGray2
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 10
         $0.font = .systemFont(ofSize: 17, weight: .light)
+        $0.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15)
     }
     
     private lazy var detailTableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -96,7 +100,7 @@ extension NewReminderAddViewController {
         contentText.rx.didBeginEditing
             .subscribe(onNext: { [weak self] _ in
                 guard let `self` = self else { return }
-                if (self.contentText.text == "    메모") {
+                if (self.contentText.text == "메모") {
                     self.contentText.text = nil
                     self.contentText.textColor = .black
                 }
@@ -106,7 +110,7 @@ extension NewReminderAddViewController {
             .subscribe(onNext: { [weak self] _ in
                 guard let `self` = self else { return }
                 if (self.contentText.text == nil || self.contentText.text == "") {
-                    self.contentText.text = "    메모"
+                    self.contentText.text = "메모"
                     self.contentText.textColor = .systemGray2
                 }
             }).disposed(by: disposeBag)

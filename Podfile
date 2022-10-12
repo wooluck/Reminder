@@ -10,5 +10,5 @@ target 'Reminder' do
     pod 'RxCocoa', '6.5.0'
     pod 'SnapKit', '~> 5.6.0'
     pod 'Then'
-
+    pod 'RxDataSources', '~> 5.0'
 end
