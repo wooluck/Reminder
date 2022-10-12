@@ -20,7 +20,7 @@ struct List {
 
 //let ListDummy: [List] = [List(title: <#T##String#>, contentTitle: <#T##String#>, contentSubTitle: <#T##String#>)]
 
-let ListDummy: [List] = [List(title: "미리 알림", number: "0")]
+let ListDummy: [List] = [List(title: "미리 알림", number: "0"), List(title: "dummy1", number: "1")]
 
 class ViewController: UIViewController {
     
@@ -40,10 +40,17 @@ class ViewController: UIViewController {
     private lazy var todayButtonInScrollView = CustomButton(image: "clock.badge.checkmark", text: "오늘", number: "0", imageColor: "")
     private lazy var laterButtonInScrollView = CustomButton(image: "calendar.circle.fill", text: "예정", number: "0", imageColor: "")
     private lazy var AllButtonInScrollView = CustomButton(image: "folder.circle.fill", text: "전체", number: "0", imageColor: "")
+    
+    private lazy var myListTitle = UILabel().then {
+        $0.text = "나의 목록"
+        $0.font = UIFont.systemFont(ofSize: 23, weight: .bold)
+    }
+    
     private lazy var tableView = UITableView().then {
         //        $0.backgroundColor = UIColor.systemGray6/
         
         $0.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
+        $0.layer.cornerRadius = 10
     }
     
     private lazy var bottomFixView = UIView().then {
@@ -143,14 +150,18 @@ extension ViewController {
             $0.height.equalTo(50)
         }
         
-        contentsScrollView.addSubviews([buttonsView, tableView])
+        contentsScrollView.addSubviews([buttonsView, myListTitle, tableView])
         buttonsView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(155)
         }
-        tableView.snp.makeConstraints {
+        myListTitle.snp.makeConstraints {
             $0.top.equalTo(buttonsView.snp.bottom).inset(-10)
+            $0.leading.equalToSuperview().offset(15)
+        }
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(myListTitle.snp.bottom).inset(-10)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(bottomFixView.snp.top)
         }

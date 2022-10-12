@@ -76,7 +76,9 @@ class NewReminderAddViewController: UIViewController {
         view.backgroundColor = .systemGray6
         textViewPlaceholder()
         bindTableView()
+        bindView()
         setupLayout()
+        
     }
 }
 // MARK: - extension
@@ -118,14 +120,19 @@ extension NewReminderAddViewController {
             cell.accessoryType = .disclosureIndicator
             return cell
         }.disposed(by: disposeBag)
-    }
-    
-    private func bindView() {
+        
         detailTableView.rx.itemSelected
             .subscribe { [weak self] indexPath in
                 //셀 선택 상태 제거
                 self?.detailTableView.deselectRow(at: indexPath, animated: true)
             }.disposed(by: disposeBag)
+    }
+    
+    private func bindView() {
+        customNavigationItem.leftButton.rx.tap
+            .subscribe(onNext: {
+                self.dismiss(animated: true, completion: nil)
+            }).disposed(by: disposeBag)
     }
     
     private func setupLayout() {
@@ -134,9 +141,10 @@ extension NewReminderAddViewController {
             $0.top.equalToSuperview().inset(15)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(35)
         }
         titleText.snp.makeConstraints {
-            $0.top.equalTo(customNavigationItem.snp.bottom).inset(-70)
+            $0.top.equalTo(customNavigationItem.snp.bottom).inset(-20)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(60)

@@ -147,7 +147,7 @@ extension ListAddViewController {
         
         customNavigationItem.leftButton.rx.tap
             .subscribe(onNext: {
-                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             }).disposed(by: disposeBag)
         
     }
