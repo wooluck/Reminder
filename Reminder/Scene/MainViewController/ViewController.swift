@@ -87,7 +87,7 @@ class ViewController: UIViewController {
     }
 }
 
-    //MARK: - extension
+//MARK: - extension
 extension ViewController {
     private func bindTableView() {
         tableData.bind(to: tableView.rx.items) { tableView, row, element in
@@ -107,22 +107,22 @@ extension ViewController {
         
         self.bottomLeftButton.rx.tap
             .subscribe(onNext: {
-                self.present(NewReminderAddViewController(), animated: true)
+//                self.present(NewReminderAddViewController(), animated: true)
+                self.navigationController?.pushViewController(NewReminderAddViewController(), animated: true)
             }).disposed(by: disposeBag)
         
         tableView.rx.modelSelected(List.self)
             .subscribe(onNext: { [weak self] member in
                 guard let `self` = self else { return }
-                
-                print("@@ member : \(member)")
                 self.navigationController?.pushViewController(CustomDetailViewController(), animated: true)
+                print("이동 \(self.navigationController)")
             }).disposed(by: disposeBag)
         
-                tableView.rx.itemSelected
-                    .subscribe { [weak self] indexPath in
-                        //셀 선택 상태 제거
-                        self?.tableView.deselectRow(at: indexPath, animated: true)
-                    }.disposed(by: disposeBag)
+//        tableView.rx.itemSelected
+//            .subscribe { [weak self] indexPath in
+//                //셀 선택 상태 제거
+//                self?.tableView.deselectRow(at: indexPath, animated: true)
+//            }.disposed(by: disposeBag)
     }
     
     private func navigationSetup() {

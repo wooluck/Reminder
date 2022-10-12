@@ -14,15 +14,16 @@ import SnapKit
 struct NewReminderAddList {
     var leftText: String
 //    var centerImage: UIImageView
-    var rightText: String
+    var rightText: String?
 }
 
 let NewReminderAddDummy: [NewReminderAddList] = [NewReminderAddList(leftText: "목록", rightText: "미리 알림")]
-
+let NewReminderDetailDummy: [NewReminderAddList] = [NewReminderAddList(leftText: "세부사항")]
 class NewReminderAddViewController: UIViewController {
     var disposeBag = DisposeBag()
     
     private let tableData = Observable.of(NewReminderAddDummy.map { $0 })
+    private let tableDtailData = Observable.of(NewReminderDetailDummy.map { $0 })
     
     private lazy var customNavigationItem = CustomNavigationItem(leftButtonText: "취소", rightButtonText: "추가", navigationTitleText: "새로운 미리 알림").then {
         if titleText.text?.count != 0 {
@@ -62,6 +63,7 @@ class NewReminderAddViewController: UIViewController {
     // MARK: - viewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
         self.titleText.becomeFirstResponder()
+        
         if let index = self.detailTableView.indexPathForSelectedRow  {
             self.detailTableView.deselectRow(at: index, animated: true)
         }
@@ -74,6 +76,7 @@ class NewReminderAddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray6
+        navigationSetup()
         textViewPlaceholder()
         bindTableView()
         bindView()
@@ -83,6 +86,12 @@ class NewReminderAddViewController: UIViewController {
 }
 // MARK: - extension
 extension NewReminderAddViewController {
+    private func navigationSetup() {
+        self.navigationItem.title = "새로운 미리 알림"
+        let rightBtn = UIBarButtonItem(title: "추가", style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = rightBtn
+    }
+    
     private func textViewPlaceholder() {
         contentText.rx.didBeginEditing
             .subscribe(onNext: { [weak self] _ in
@@ -104,10 +113,9 @@ extension NewReminderAddViewController {
     }
     
     private func bindTableView() {
-        let detail = Observable.of(["세부사항"])
-        detail.bind(to: detailTableView.rx.items) { (tableView: UITableView, index: Int, element: String) in
+        tableDtailData.bind(to: detailTableView.rx.items) { (tableView, index, element) in
             let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-            cell.textLabel?.text = element
+            cell.textLabel?.text = element.leftText
             cell.accessoryType = .disclosureIndicator
             print("element1 : \(element)")
             return cell
@@ -121,11 +129,7 @@ extension NewReminderAddViewController {
             return cell
         }.disposed(by: disposeBag)
         
-        detailTableView.rx.itemSelected
-            .subscribe { [weak self] indexPath in
-                //셀 선택 상태 제거
-                self?.detailTableView.deselectRow(at: indexPath, animated: true)
-            }.disposed(by: disposeBag)
+
     }
     
     private func bindView() {
@@ -133,18 +137,47 @@ extension NewReminderAddViewController {
             .subscribe(onNext: {
                 self.dismiss(animated: true, completion: nil)
             }).disposed(by: disposeBag)
+        
+        detailTableView.rx.itemSelected
+            .subscribe { [weak self] indexPath in
+                //셀 선택 상태 제거
+                self?.detailTableView.deselectRow(at: indexPath, animated: true)
+//                self?.navigationController?.pushViewController(NewReminderDetailViewController(), animated: true)
+            }.disposed(by: disposeBag)
+//
+//        listTableView.rx.itemSelected
+//            .subscribe { [weak self] indexPath in
+//                //셀 선택 상태 제거
+////                self?.detailTableView.deselectRow(at: indexPath, animated: true)
+//                self?.navigationController?.pushViewController(NewReminderDetailViewController(), animated: true)
+//            }.disposed(by: disposeBag)
+        
+        detailTableView.rx.modelSelected(NewReminderAddList.self)
+            .subscribe(onNext: { [weak self] member in
+                guard let `self` = self else { return }
+                self.navigationController?.pushViewController(NewReminderDetailViewController(), animated: true)
+//                self.present(NewReminderDetailViewController(), animated: true, completion: nil)
+                print("이동 \(self.navigationController)")
+            }).disposed(by: disposeBag)
+        
+        listTableView.rx.modelSelected(NewReminderAddList.self)
+            .subscribe(onNext: { [weak self] member in
+                guard let `self` = self else { return }
+                self.navigationController?.pushViewController(NewReminderListViewController(), animated: true)
+            }).disposed(by: disposeBag)
     }
     
     private func setupLayout() {
-        view.addSubviews([customNavigationItem, titleText, underLine, contentText, detailTableView, listTableView])
-        customNavigationItem.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(15)
-            $0.leading.equalToSuperview().inset(20)
-            $0.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(35)
-        }
+        view.addSubviews([ titleText, underLine, contentText, detailTableView, listTableView])
+//        customNavigationItem.snp.makeConstraints {
+//            $0.top.equalToSuperview().inset(15)
+//            $0.leading.equalToSuperview().inset(20)
+//            $0.trailing.equalToSuperview().inset(20)
+//            $0.height.equalTo(35)
+//        }
         titleText.snp.makeConstraints {
-            $0.top.equalTo(customNavigationItem.snp.bottom).inset(-20)
+//            $0.top.equalTo(customNavigationItem.snp.bottom).inset(-20)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(10)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(60)

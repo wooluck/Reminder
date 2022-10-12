@@ -10,4 +10,9 @@ import UIKit
 
 class NewReminderListViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .blue
+    }
 }
