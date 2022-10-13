@@ -13,6 +13,10 @@ class DayCalendarUIView: UIView {
     
     private lazy var calendarView = FSCalendar()
     
+    private lazy var underLine = UIView().then {
+        $0.backgroundColor = .systemGray3
+    }
+    
     let dateFormatter = DateFormatter()
     
     override init(frame: CGRect) {
@@ -36,12 +40,18 @@ extension DayCalendarUIView {
     }
     
     private func setupLayout() {
-        addSubviews([calendarView])
+        addSubviews([calendarView, underLine])
         calendarView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
+        }
+        underLine.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(20)
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(1)
         }
     }
 }

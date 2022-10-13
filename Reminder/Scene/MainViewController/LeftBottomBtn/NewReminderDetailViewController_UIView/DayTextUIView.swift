@@ -16,19 +16,20 @@ class DayTextUIView: UIView {
         $0.image = UIImage(systemName: "calendar.circle.fill")
         $0.tintColor = .red
     }
-    
     private lazy var text = UILabel().then {
         $0.text = "날짜"
     }
-    
     private lazy var dayText = UILabel().then {
         $0.text = "오늘"
         $0.textColor = .blue
         $0.font = .systemFont(ofSize: 14, weight: .medium)
     }
-    
-    lazy var switchBtn = UISwitch().then {
+    var switchBtn = UISwitch().then {
         $0.addTarget(self, action: #selector(changeIsOn(sender:)), for: .valueChanged)
+    }
+    
+    private lazy var underLine = UIView().then {
+        $0.backgroundColor = .systemGray3
     }
     
     // MARK: - init()
@@ -52,7 +53,7 @@ class DayTextUIView: UIView {
     // MARK: - extensions
 extension DayTextUIView {
     private func setupLayout() {
-        addSubviews([image, text, dayText, switchBtn])
+        addSubviews([image, text, dayText, switchBtn, underLine])
         image.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(10)
@@ -70,6 +71,12 @@ extension DayTextUIView {
 //            $0.top.equalToSuperview().inset(10)
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(20)
+        }
+        underLine.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(55)
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(1)
         }
     }
 }

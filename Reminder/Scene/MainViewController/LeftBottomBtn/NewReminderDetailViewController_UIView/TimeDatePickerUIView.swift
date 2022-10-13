@@ -34,10 +34,10 @@ extension TimeDatePickerUIView {
     private func setupLayout() {
         addSubviews([datePickerView])
         datePickerView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.top.equalToSuperview().inset(10)
+//            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(22)
+            $0.bottom.equalToSuperview().inset(10)
         }
     }
 }

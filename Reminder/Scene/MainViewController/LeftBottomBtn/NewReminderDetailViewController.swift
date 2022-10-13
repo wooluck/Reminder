@@ -12,27 +12,20 @@ import RxCocoa
 import SnapKit
 import RxDataSources
 
-//struct NewReminderDetailList {
-//    var image: String
-//    var text: String
-//    var dayText: String
-//}
-
-//let detailDummy: [NewReminderDetailList] = [NewReminderDetailList(image: "star", text: "날짜", dayText: "오늘")]
-
 class NewReminderDetailViewController: UIViewController {
     private let disposeBag = DisposeBag()
-    //    private let tableData = Observable.of(detailDummy.map { $0 })
-    
-    //    private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
-    //        $0.register(NewReminderDetailTableViewCell.self, forCellReuseIdentifier: NewReminderDetailTableViewCell.identifier)
-    //        $0.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    //    }
-    
+
     var calendarIsOn : Bool = false {
         willSet {
-            self.hideCalendar(isHidden: newValue)
+            self.hideCalendar(notHidden: newValue)
             print("calendarIsOn : \(newValue)")
+        }
+    }
+    
+    var timeIsOn: Bool = false {
+        willSet {
+            self.hideTime(notHidden: newValue)
+            print("timeIsOn : \(newValue)")
         }
     }
 
@@ -42,6 +35,10 @@ class NewReminderDetailViewController: UIViewController {
     private lazy var timeDatePickerView = TimeDatePickerUIView().then {
         $0.isHidden = false
     }
+    
+    private lazy var replyTable = UITableView()
+    
+    
     
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -73,10 +70,10 @@ extension NewReminderDetailViewController {
             $0.top.equalTo(dayView.snp.bottom)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(0)
+            $0.height.equalTo(300)
+//            $0.bottom.equalTo(timeView.snp.top)
         }
         timeView.snp.makeConstraints {
-            
             $0.top.equalTo(dayCalendarView.snp.bottom)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
@@ -86,18 +83,26 @@ extension NewReminderDetailViewController {
             $0.top.equalTo(timeView.snp.bottom)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(40)
+//            $0.height.equalTo(0)
         }
     }
     
-    private func hideCalendar(isHidden: Bool) {
-        print("func hideCalendar: \(isHidden)")
-        dayCalendarView.snp.updateConstraints {
-            $0.height.equalTo(isHidden ? 300 : 0)
+    private func hideCalendar(notHidden: Bool) {
+        print("func hideCalendar: \(notHidden)")
+        DispatchQueue.main.async {
+            self.dayCalendarView.snp.updateConstraints {
+                $0.height.equalTo(notHidden ? 300 : 0)
+            }
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         }
-        UIView.animate(withDuration: 0.3, animations: {
-            self.dayCalendarView.superview?.layoutIfNeeded()
-        })
+    }
+    
+    private func hideTime(notHidden: Bool) {
+        self.timeDatePickerView.snp.updateConstraints {
+            $0.height.equalTo(notHidden ? 40 : 0)
+        }
     }
     
     private func dayViewHidden() {

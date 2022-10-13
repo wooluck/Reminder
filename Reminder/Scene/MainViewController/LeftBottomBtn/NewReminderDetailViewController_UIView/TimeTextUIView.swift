@@ -10,6 +10,8 @@ import UIKit
 
 class TimeTextUIView: UIView {
     
+    var detailVC = NewReminderDetailViewController()
+    
     private lazy var image = UIImageView().then {
         $0.image = UIImage(systemName: "clock.fill")
     }
@@ -24,7 +26,13 @@ class TimeTextUIView: UIView {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
     }
     
-    private lazy var switchBtn = UISwitch()
+    private lazy var switchBtn = UISwitch().then {
+        $0.addTarget(self, action: #selector(changeIsOn(sender:)), for: .valueChanged)
+    }
+    
+    private lazy var underLine = UIView().then {
+        $0.backgroundColor = .systemGray3
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,11 +43,17 @@ class TimeTextUIView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - @objc
+    @objc func changeIsOn(sender: UISwitch) {
+        detailVC.calendarIsOn = switchBtn.isOn
+        print("switchBtn.isOn : \(detailVC.calendarIsOn)")
+    }
 }
 
 extension TimeTextUIView {
     private func setupLayout() {
-        addSubviews([image, text, dayText, switchBtn])
+        addSubviews([image, text, dayText, switchBtn, underLine])
         image.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(10)
@@ -56,6 +70,12 @@ extension TimeTextUIView {
         switchBtn.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(20)
+        }
+        underLine.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(55)
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(1)
         }
     }
 }
