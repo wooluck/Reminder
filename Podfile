@@ -11,4 +11,5 @@ target 'Reminder' do
     pod 'SnapKit', '~> 5.6.0'
     pod 'Then'
     pod 'RxDataSources', '~> 5.0'
+    pod 'FSCalendar'
 end

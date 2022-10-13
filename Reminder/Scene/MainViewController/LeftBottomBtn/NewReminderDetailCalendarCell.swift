@@ -1,16 +1,16 @@
 //
-//  NewReminderDetailTableViewCell.swift
+//  NewReminderDetailCalendarCell.swift
 //  Reminder
 //
-//  Created by pineone on 2022/10/12.
+//  Created by pineone on 2022/10/13.
 //
 
 import Foundation
 import UIKit
 
 // 이미지 - 텍스트 - 스위치버튼
-class NewReminderDetailTableViewCell: UITableViewCell {
-    static let identifier = "NewReminderDetailTableViewCell"
+class NewReminderDetailCalendarCell: UITableViewCell {
+    static let identifier = "NewReminderDetailCalendarCell"
     
     lazy var leftImageInCell = UIImageView()
     
@@ -31,7 +31,7 @@ class NewReminderDetailTableViewCell: UITableViewCell {
 }
 
 // MARK: - extension
-extension NewReminderDetailTableViewCell {
+extension NewReminderDetailCalendarCell {
     private func setupLayout() {
         addSubviews([leftImageInCell, centerTextInCell, centerDayTextInCell, rightSwitchInCell])
         leftImageInCell.snp.makeConstraints {
