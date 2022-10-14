@@ -132,8 +132,6 @@ extension NewReminderAddViewController {
             cell.accessoryType = .disclosureIndicator
             return cell
         }.disposed(by: disposeBag)
-        
-
     }
     
     private func bindView() {

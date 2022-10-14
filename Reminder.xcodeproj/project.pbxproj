@@ -16,12 +16,16 @@
 		C3BB422F28F0236400E94935 /* CustomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB422E28F0236400E94935 /* CustomDetailViewController.swift */; };
 		C3C23A5D28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A5C28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift */; };
 		C3C23A6028F5611900C4FB54 /* DetailPriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A5F28F5611900C4FB54 /* DetailPriorityViewController.swift */; };
-		C3C23A6228F6980E00C4FB54 /* NewReminderDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A6128F6980E00C4FB54 /* NewReminderDetailTableViewCell.swift */; };
-		C3C23A6428F7A8D700C4FB54 /* NewReminderDetailCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A6328F7A8D700C4FB54 /* NewReminderDetailCalendarCell.swift */; };
 		C3C23A6728F7C1CD00C4FB54 /* DayTextUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A6628F7C1CD00C4FB54 /* DayTextUIView.swift */; };
 		C3C23A6928F7C1DE00C4FB54 /* DayCalendarUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A6828F7C1DE00C4FB54 /* DayCalendarUIView.swift */; };
 		C3C23A6B28F7C1F000C4FB54 /* TimeTextUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A6A28F7C1F000C4FB54 /* TimeTextUIView.swift */; };
 		C3C23A6D28F7C20600C4FB54 /* TimeDatePickerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A6C28F7C20600C4FB54 /* TimeDatePickerUIView.swift */; };
+		C3C23A6F28F8DF6500C4FB54 /* LocationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A6E28F8DF6500C4FB54 /* LocationUIView.swift */; };
+		C3C23A7128F8E9CB00C4FB54 /* NewReminderDetailReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A7028F8E9CB00C4FB54 /* NewReminderDetailReplyCell.swift */; };
+		C3C23A7328F8E9E600C4FB54 /* NewReminderDetailPriorityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A7228F8E9E600C4FB54 /* NewReminderDetailPriorityCell.swift */; };
+		C3C23A7528F8F70F00C4FB54 /* LocationDetailUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A7428F8F70F00C4FB54 /* LocationDetailUIView.swift */; };
+		C3C23A7728F919F700C4FB54 /* DetailReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A7628F919F700C4FB54 /* DetailReplyViewController.swift */; };
+		C3C23A7928F91BED00C4FB54 /* LocationDetailLabelUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C23A7828F91BED00C4FB54 /* LocationDetailLabelUIView.swift */; };
 		C3C2EF7A28ED431D002C2F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2EF7928ED431D002C2F79 /* AppDelegate.swift */; };
 		C3C2EF7C28ED431D002C2F79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2EF7B28ED431D002C2F79 /* SceneDelegate.swift */; };
 		C3C2EF7E28ED431D002C2F79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2EF7D28ED431D002C2F79 /* ViewController.swift */; };
@@ -47,12 +51,16 @@
 		C3BB422E28F0236400E94935 /* CustomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailViewController.swift; sourceTree = "<group>"; };
 		C3C23A5C28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderAddListTableViewCell.swift; sourceTree = "<group>"; };
 		C3C23A5F28F5611900C4FB54 /* DetailPriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPriorityViewController.swift; sourceTree = "<group>"; };
-		C3C23A6128F6980E00C4FB54 /* NewReminderDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderDetailTableViewCell.swift; sourceTree = "<group>"; };
-		C3C23A6328F7A8D700C4FB54 /* NewReminderDetailCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderDetailCalendarCell.swift; sourceTree = "<group>"; };
 		C3C23A6628F7C1CD00C4FB54 /* DayTextUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTextUIView.swift; sourceTree = "<group>"; };
 		C3C23A6828F7C1DE00C4FB54 /* DayCalendarUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarUIView.swift; sourceTree = "<group>"; };
 		C3C23A6A28F7C1F000C4FB54 /* TimeTextUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTextUIView.swift; sourceTree = "<group>"; };
 		C3C23A6C28F7C20600C4FB54 /* TimeDatePickerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDatePickerUIView.swift; sourceTree = "<group>"; };
+		C3C23A6E28F8DF6500C4FB54 /* LocationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUIView.swift; sourceTree = "<group>"; };
+		C3C23A7028F8E9CB00C4FB54 /* NewReminderDetailReplyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderDetailReplyCell.swift; sourceTree = "<group>"; };
+		C3C23A7228F8E9E600C4FB54 /* NewReminderDetailPriorityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderDetailPriorityCell.swift; sourceTree = "<group>"; };
+		C3C23A7428F8F70F00C4FB54 /* LocationDetailUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailUIView.swift; sourceTree = "<group>"; };
+		C3C23A7628F919F700C4FB54 /* DetailReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReplyViewController.swift; sourceTree = "<group>"; };
+		C3C23A7828F91BED00C4FB54 /* LocationDetailLabelUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailLabelUIView.swift; sourceTree = "<group>"; };
 		C3C2EF7628ED431D002C2F79 /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C2EF7928ED431D002C2F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3C2EF7B28ED431D002C2F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,9 +123,9 @@
 				C3C2EFA528EE9F27002C2F79 /* NewReminderAddViewController.swift */,
 				C3C23A5C28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift */,
 				C3BB422328F012F000E94935 /* NewReminderDetailViewController.swift */,
+				C3C23A7028F8E9CB00C4FB54 /* NewReminderDetailReplyCell.swift */,
+				C3C23A7228F8E9E600C4FB54 /* NewReminderDetailPriorityCell.swift */,
 				C3C23A6528F7C13E00C4FB54 /* NewReminderDetailViewController_UIView */,
-				C3C23A6128F6980E00C4FB54 /* NewReminderDetailTableViewCell.swift */,
-				C3C23A6328F7A8D700C4FB54 /* NewReminderDetailCalendarCell.swift */,
 				C3C23A5E28F559BD00C4FB54 /* Into */,
 				C3BB422728F0133200E94935 /* NewReminderListViewController.swift */,
 			);
@@ -147,6 +155,7 @@
 		C3C23A5E28F559BD00C4FB54 /* Into */ = {
 			isa = PBXGroup;
 			children = (
+				C3C23A7628F919F700C4FB54 /* DetailReplyViewController.swift */,
 				C3C23A5F28F5611900C4FB54 /* DetailPriorityViewController.swift */,
 			);
 			path = Into;
@@ -159,6 +168,9 @@
 				C3C23A6828F7C1DE00C4FB54 /* DayCalendarUIView.swift */,
 				C3C23A6A28F7C1F000C4FB54 /* TimeTextUIView.swift */,
 				C3C23A6C28F7C20600C4FB54 /* TimeDatePickerUIView.swift */,
+				C3C23A6E28F8DF6500C4FB54 /* LocationUIView.swift */,
+				C3C23A7428F8F70F00C4FB54 /* LocationDetailUIView.swift */,
+				C3C23A7828F91BED00C4FB54 /* LocationDetailLabelUIView.swift */,
 			);
 			path = NewReminderDetailViewController_UIView;
 			sourceTree = "<group>";
@@ -368,26 +380,30 @@
 				C3C23A5D28F54F3600C4FB54 /* NewReminderAddListTableViewCell.swift in Sources */,
 				C3C2EF8F28ED4C33002C2F79 /* UIView.swift in Sources */,
 				C3C2EF7E28ED431D002C2F79 /* ViewController.swift in Sources */,
-				C3C23A6228F6980E00C4FB54 /* NewReminderDetailTableViewCell.swift in Sources */,
 				C3C2EFA428EE9C8A002C2F79 /* ListAddViewController.swift in Sources */,
+				C3C23A7328F8E9E600C4FB54 /* NewReminderDetailPriorityCell.swift in Sources */,
 				C3C23A6D28F7C20600C4FB54 /* TimeDatePickerUIView.swift in Sources */,
 				C3C2EF9A28ED868F002C2F79 /* CustomTableViewCell.swift in Sources */,
 				C3C23A6B28F7C1F000C4FB54 /* TimeTextUIView.swift in Sources */,
 				C3C2EF9528ED6C28002C2F79 /* CustomButton.swift in Sources */,
+				C3C23A7528F8F70F00C4FB54 /* LocationDetailUIView.swift in Sources */,
 				C3C2EF9228ED6360002C2F79 /* CustomSearchBar.swift in Sources */,
 				C3BB422D28F0231A00E94935 /* CustomDetailTableViewCell.swift in Sources */,
 				C3BB421C28EEB22900E94935 /* CustomNavigationItem.swift in Sources */,
+				C3C23A7728F919F700C4FB54 /* DetailReplyViewController.swift in Sources */,
 				C3C23A6728F7C1CD00C4FB54 /* DayTextUIView.swift in Sources */,
+				C3C23A6F28F8DF6500C4FB54 /* LocationUIView.swift in Sources */,
 				C3C23A6928F7C1DE00C4FB54 /* DayCalendarUIView.swift in Sources */,
 				C3C2EFA628EE9F27002C2F79 /* NewReminderAddViewController.swift in Sources */,
 				C3C2EF7A28ED431D002C2F79 /* AppDelegate.swift in Sources */,
+				C3C23A7928F91BED00C4FB54 /* LocationDetailLabelUIView.swift in Sources */,
 				C3C2EFA128EE89EE002C2F79 /* TableList.swift in Sources */,
 				C3C23A6028F5611900C4FB54 /* DetailPriorityViewController.swift in Sources */,
 				C3BB422F28F0236400E94935 /* CustomDetailViewController.swift in Sources */,
-				C3C23A6428F7A8D700C4FB54 /* NewReminderDetailCalendarCell.swift in Sources */,
 				C3C2EF7C28ED431D002C2F79 /* SceneDelegate.swift in Sources */,
 				C3BB421E28EEC08800E94935 /* CustomColorSelectButton.swift in Sources */,
 				C3BB422428F012F000E94935 /* NewReminderDetailViewController.swift in Sources */,
+				C3C23A7128F8E9CB00C4FB54 /* NewReminderDetailReplyCell.swift in Sources */,
 				C3BB422828F0133200E94935 /* NewReminderListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
