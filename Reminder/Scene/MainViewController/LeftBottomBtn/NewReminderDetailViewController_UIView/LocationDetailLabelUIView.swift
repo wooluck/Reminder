@@ -18,7 +18,8 @@ class LocationDetailLabelUIView: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+//        backgroundColor = .white
+        
         setupLayout()
     }
     
@@ -36,9 +37,10 @@ extension LocationDetailLabelUIView {
             $0.trailing.equalTo(iIconButton.snp.leading)
         }
         iIconButton.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview().inset(30)
+            $0.centerY.equalToSuperview()
             $0.width.height.equalTo(30)
         }
+
     }
 }

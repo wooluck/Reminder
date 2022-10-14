@@ -167,7 +167,7 @@ extension NewReminderDetailViewController {
             $0.top.equalTo(replyTable.snp.bottom)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(550)
+            $0.height.equalTo(55)
         }
         locationDetailView.snp.makeConstraints {
             $0.top.equalTo(locationView.snp.bottom)
@@ -175,6 +175,7 @@ extension NewReminderDetailViewController {
             $0.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(100)
         }
+        
     }
 }
 extension NewReminderDetailViewController {
