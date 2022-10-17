@@ -116,6 +116,7 @@ extension LocationDetailUIView {
         locationLabelView.snp.makeConstraints {
             $0.top.equalTo(underLine.snp.bottom).offset(50)
             $0.leading.equalToSuperview().inset(20)
+            //되나
 //            $0.height.equalTo(50)
         }
     }
