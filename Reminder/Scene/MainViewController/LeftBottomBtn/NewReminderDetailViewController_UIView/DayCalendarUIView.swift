@@ -11,7 +11,7 @@ import FSCalendar
 
 class DayCalendarUIView: UIView {
     
-    private lazy var calendarView = FSCalendar()
+    lazy var calendarView = FSCalendar()
     
     private lazy var underLine = UIView().then {
         $0.backgroundColor = .systemGray3
@@ -27,6 +27,7 @@ class DayCalendarUIView: UIView {
         calendarView.dataSource = self
         setupLayout()
         calendarSetup()
+//        calendarView.removeFromSuperview()
     }
     
     required init?(coder: NSCoder) {
@@ -45,7 +46,8 @@ extension DayCalendarUIView {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+//            $0.bottom.equalToSuperview()
+            $0.height.equalTo(300)
         }
         underLine.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)

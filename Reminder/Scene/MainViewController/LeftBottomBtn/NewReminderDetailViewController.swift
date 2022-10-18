@@ -23,35 +23,23 @@ let NewReminderDetailpriorityDummy: [NewReminderDetailList] = [NewReminderDetail
 class NewReminderDetailViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
+    //    let calendarUIView = DayCalendarUIView()
+    
     let tableReplyData = Observable.of(NewReminderDetailReplyDummy.map { $0 })
     let tableProirData = Observable.of(NewReminderDetailpriorityDummy.map { $0 })
-
-    var calendarIsOn : Bool = false {
-        willSet {
-            self.hideCalendar(notHidden: newValue)
-            print("calendarIsOn : \(newValue)")
-        }
-    }
     
-    var timeIsOn: Bool = false {
-        willSet {
-            self.hideTime(notHidden: newValue)
-            print("timeIsOn : \(newValue)")
-        }
-    }
     
     private lazy var contentScrollView = UIScrollView().then {
         $0.backgroundColor = .clear
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.showsVerticalScrollIndicator = false
-//        $0.backgroundColor = .purple
     }
     private lazy var contentView = UIView()
-
+    
     private lazy var dayView = DayTextUIView()
-    private lazy var dayCalendarView = DayCalendarUIView()
+    lazy var dayCalendarView = DayCalendarUIView()
     private lazy var timeView = TimeTextUIView()
-    private lazy var timeDatePickerView = TimeDatePickerUIView().then {
+    lazy var timeDatePickerView = TimeDatePickerUIView().then {
         $0.isHidden = false
     }
     private lazy var replyTable = UITableView(frame: .zero, style: .insetGrouped).then {
@@ -84,6 +72,7 @@ class NewReminderDetailViewController: UIViewController {
         setupLayout()
         bindTableView()
         dayViewHidden()
+        timeViewHidden()
     }
 }
 
@@ -91,7 +80,7 @@ extension NewReminderDetailViewController {
     private func bindTableView() {
         tableReplyData.bind(to: replyTable.rx.items) { (tableView, index, element) in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewReminderDetailReplyCell.identifier) as? NewReminderDetailReplyCell else { return UITableViewCell()}
-
+            
             cell.leftImageInCell.text = element.leftText
             cell.rightTextInCell.text = element.rightText
             cell.accessoryType = .disclosureIndicator
@@ -99,13 +88,6 @@ extension NewReminderDetailViewController {
             return cell
         }.disposed(by: disposeBag)
         
-//        tableProirData.bind(to: priorityTable.rx.items) { (tableView, index, element) in
-//            let cell = tableView.dequeueReusableCell(withIdentifier: NewReminderDetailPriorityCell.identifier) as! NewReminderAddListTableViewCell
-//            cell.leftTextInCell.text = element.leftText
-//            cell.rightTextInCell.text = element.rightText
-//            cell.accessoryType = .disclosureIndicator
-//            return cell
-//        }.disposed(by: disposeBag)
     }
     
     private func navigationSetup() {
@@ -127,7 +109,7 @@ extension NewReminderDetailViewController {
         contentView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-            $0.height.equalTo(2300)
+            //            $0.height.equalTo(2300)
         }
         
         contentView.addSubviews([dayView, dayCalendarView, timeView, timeDatePickerView, replyTable, locationView, locationDetailView])
@@ -142,8 +124,7 @@ extension NewReminderDetailViewController {
             $0.top.equalTo(dayView.snp.bottom)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(300)
-//            $0.bottom.equalTo(timeView.snp.top)
+            $0.height.equalTo(0)
         }
         timeView.snp.makeConstraints {
             $0.top.equalTo(dayCalendarView.snp.bottom)
@@ -155,7 +136,7 @@ extension NewReminderDetailViewController {
             $0.top.equalTo(timeView.snp.bottom)
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
-//            $0.height.equalTo(0)
+            $0.height.equalTo(0)
         }
         replyTable.snp.makeConstraints {
             $0.top.equalTo(timeDatePickerView.snp.bottom)
@@ -174,16 +155,16 @@ extension NewReminderDetailViewController {
             $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(100)
+            $0.bottom.equalToSuperview()
         }
         
     }
 }
 extension NewReminderDetailViewController {
-    private func hideCalendar(notHidden: Bool) {
-        print("func hideCalendar: \(notHidden)")
-        DispatchQueue.main.async {
+    private func dayViewHidden() {
+        dayView.completion = { bool in
             self.dayCalendarView.snp.updateConstraints {
-                $0.height.equalTo(notHidden ? 300 : 0)
+                $0.height.equalTo(bool ? 300 : 0)
             }
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
@@ -191,18 +172,15 @@ extension NewReminderDetailViewController {
         }
     }
     
-    private func hideTime(notHidden: Bool) {
-        self.timeDatePickerView.snp.updateConstraints {
-            $0.height.equalTo(notHidden ? 40 : 0)
+    private func timeViewHidden() {
+        timeView.completion = { bool in
+            self.timeDatePickerView.snp.updateConstraints {
+                $0.height.equalTo(bool ? 50 : 0)
+            }
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         }
-    }
-    
-    private func dayViewHidden() {
-//        if self.dayView.switchBtn.isOn == true {
-//            UIView.animate(withDuration: 0.3) {
-//                self.dayCalendarView.isHidden = !self.dayCalendarView.isHidden
-//            }
-//        }
     }
 }
 

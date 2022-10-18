@@ -10,7 +10,8 @@ import UIKit
 
 class TimeTextUIView: UIView {
     
-    var detailVC = NewReminderDetailViewController()
+//    var detailVC = NewReminderDetailViewController()
+    var completion: ((Bool) -> Void)?
     
     private lazy var image = UIImageView().then {
         $0.image = UIImage(systemName: "clock.fill")
@@ -27,7 +28,7 @@ class TimeTextUIView: UIView {
     }
     
     private lazy var switchBtn = UISwitch().then {
-        $0.addTarget(self, action: #selector(changeIsOn(sender:)), for: .valueChanged)
+        $0.addTarget(self, action: #selector(changeIsOn), for: .valueChanged)
     }
     
     private lazy var underLine = UIView().then {
@@ -45,9 +46,8 @@ class TimeTextUIView: UIView {
     }
     
     // MARK: - @objc
-    @objc func changeIsOn(sender: UISwitch) {
-        detailVC.calendarIsOn = switchBtn.isOn
-        print("switchBtn.isOn : \(detailVC.calendarIsOn)")
+    @objc func changeIsOn() {
+        completion?(self.switchBtn.isOn)
     }
 }
 

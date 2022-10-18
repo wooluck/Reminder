@@ -10,7 +10,8 @@ import UIKit
 
 class DayTextUIView: UIView {
     
-    var detailVC = NewReminderDetailViewController()
+//    var detailVC = NewReminderDetailViewController()
+    var completion: ((Bool) -> Void)?
     
     private lazy var image = UIImageView().then {
         $0.image = UIImage(systemName: "calendar.circle.fill")
@@ -25,7 +26,7 @@ class DayTextUIView: UIView {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
     }
     var switchBtn = UISwitch().then {
-        $0.addTarget(self, action: #selector(changeIsOn(sender:)), for: .valueChanged)
+        $0.addTarget(self, action: #selector(changeIsOn), for: .valueChanged)
     }
     
     private lazy var underLine = UIView().then {
@@ -44,9 +45,8 @@ class DayTextUIView: UIView {
     }
     
     // MARK: - @objc
-    @objc func changeIsOn(sender: UISwitch) {
-        detailVC.calendarIsOn = switchBtn.isOn
-        print("switchBtn.isOn : \(detailVC.calendarIsOn)")
+    @objc func changeIsOn() {
+        completion?(switchBtn.isOn)
     }
 }
 
