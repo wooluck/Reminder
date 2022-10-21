@@ -14,18 +14,13 @@ import SnapKit
 struct List {
     let title: String
     let number: String
-    //    let contentTitle: String
-    //    let contentSubTitle: String
 }
 
-//let ListDummy: [List] = [List(title: <#T##String#>, contentTitle: <#T##String#>, contentSubTitle: <#T##String#>)]
-
-let ListDummy: [List] = [List(title: "미리 알림", number: "0"), List(title: "dummy1", number: "1")]
+let ListDummy: [List] = [List(title: "미리 알림", number: "0")]
 
 class ViewController: UIViewController {
-    
     var disposeBag = DisposeBag()
-    //    let tableDataRelay = BehaviorRelay<[TableList]>(value: [])
+
     private let tableData = Observable.of(ListDummy.map { $0 })
     
     private lazy var searchBar = CustomSearchBar()
@@ -34,11 +29,15 @@ class ViewController: UIViewController {
         $0.backgroundColor = UIColor.systemGray6
         $0.showsVerticalScrollIndicator = false
     }
+    
     private lazy var buttonsView = UIView().then {
         $0.backgroundColor = UIColor.systemGray6
     }
+    
     private lazy var todayButtonInScrollView = CustomButton(image: "clock.badge.checkmark", text: "오늘", number: "0", imageColor: "")
+    
     private lazy var laterButtonInScrollView = CustomButton(image: "calendar.circle.fill", text: "예정", number: "0", imageColor: "")
+    
     private lazy var AllButtonInScrollView = CustomButton(image: "folder.circle.fill", text: "전체", number: "0", imageColor: "")
     
     private lazy var myListTitle = UILabel().then {
@@ -47,20 +46,22 @@ class ViewController: UIViewController {
     }
     
     private lazy var tableView = UITableView().then {
-        //        $0.backgroundColor = UIColor.systemGray6/
-        
         $0.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
         $0.layer.cornerRadius = 10
+        $0.estimatedRowHeight = 50
+        $0.rowHeight = UITableView.automaticDimension
     }
     
     private lazy var bottomFixView = UIView().then {
         $0.backgroundColor = UIColor.systemGray6
     }
+    
     private lazy var bottomLeftButton = UIButton().then {
         $0.setTitleColor(UIColor(red: 80 / 255, green: 152 / 255, blue: 250 / 255, alpha: 1), for: .normal)
         $0.setTitle(" 새로운 미리 알림", for: .normal)
         $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
     }
+    
     private lazy var bottomRightButton = UIButton().then {
         $0.setTitleColor(UIColor(red: 80 / 255, green: 152 / 255, blue: 250 / 255, alpha: 1), for: .normal)
         $0.setTitle("목록 추가", for: .normal)
@@ -74,7 +75,6 @@ class ViewController: UIViewController {
             self.tableView.deselectRow(at: index, animated: true)
         }
     }
-    
     
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -115,7 +115,6 @@ extension ViewController {
             .subscribe(onNext: { [weak self] member in
                 guard let `self` = self else { return }
                 self.navigationController?.pushViewController(CustomDetailViewController(), animated: true)
-                print("이동 \(self.navigationController)")
             }).disposed(by: disposeBag)
         
 //        tableView.rx.itemSelected

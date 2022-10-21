@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TableList {
+struct Todo {
     var title: String
-    var number: Int
+    var description: String
 }

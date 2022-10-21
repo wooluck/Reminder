@@ -108,7 +108,7 @@ extension CustomDetailViewController {
         
         self.navigationItem.rightBarButtonItem = rightBtn
         
-        self.navigationController?.navigationBar.topItem?.title = "목록"
+//        self.navigationController?.navigationBar.topItem?.title = "목록"
     }
     
     private func bindTableView() {

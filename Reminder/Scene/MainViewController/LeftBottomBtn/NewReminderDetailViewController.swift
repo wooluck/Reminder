@@ -18,37 +18,42 @@ struct NewReminderDetailList {
 }
 
 let NewReminderDetailReplyDummy: [NewReminderDetailList] = [NewReminderDetailList(leftText: "반복", rightText: "안 함")]
+
 let NewReminderDetailpriorityDummy: [NewReminderDetailList] = [NewReminderDetailList(leftText: "우선 순위", rightText: "없음")]
 
 class NewReminderDetailViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
-    //    let calendarUIView = DayCalendarUIView()
-    
     let tableReplyData = Observable.of(NewReminderDetailReplyDummy.map { $0 })
-    let tableProirData = Observable.of(NewReminderDetailpriorityDummy.map { $0 })
     
+    let tableProirData = Observable.of(NewReminderDetailpriorityDummy.map { $0 })
     
     private lazy var contentScrollView = UIScrollView().then {
         $0.backgroundColor = .clear
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.showsVerticalScrollIndicator = false
     }
+    
     private lazy var contentView = UIView()
     
     private lazy var dayView = DayTextUIView()
+    
     lazy var dayCalendarView = DayCalendarUIView()
+    
     private lazy var timeView = TimeTextUIView()
-    lazy var timeDatePickerView = TimeDatePickerUIView().then {
-        $0.isHidden = false
-    }
+    
+    lazy var timeDatePickerView = TimeDatePickerUIView()
+    
     private lazy var replyTable = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.register(NewReminderDetailReplyCell.self, forCellReuseIdentifier: NewReminderDetailReplyCell.identifier)
         $0.rowHeight = 55
         $0.isScrollEnabled = false
     }
+    
     private lazy var locationView = LocationUIView()
+    
     private lazy var locationDetailView = LocationDetailUIView()
+    
     private lazy var priorityTable = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.register(NewReminderDetailPriorityCell.self, forCellReuseIdentifier: NewReminderDetailPriorityCell.identifier)
         $0.rowHeight = 55
@@ -142,7 +147,7 @@ extension NewReminderDetailViewController {
             $0.top.equalTo(timeDatePickerView.snp.bottom)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.height.equalTo(100)
+            $0.height.equalTo(0)
         }
         locationView.snp.makeConstraints {
             $0.top.equalTo(replyTable.snp.bottom)
@@ -162,9 +167,13 @@ extension NewReminderDetailViewController {
 }
 extension NewReminderDetailViewController {
     private func dayViewHidden() {
-        dayView.completion = { bool in
+        dayView.completion = { [weak self] bool in
+            guard let `self` = self else { return }
             self.dayCalendarView.snp.updateConstraints {
                 $0.height.equalTo(bool ? 300 : 0)
+            }
+            self.replyTable.snp.updateConstraints {
+                $0.height.equalTo(bool ? 100 : 0)
             }
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
@@ -177,6 +186,7 @@ extension NewReminderDetailViewController {
             self.timeDatePickerView.snp.updateConstraints {
                 $0.height.equalTo(bool ? 50 : 0)
             }
+            
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }

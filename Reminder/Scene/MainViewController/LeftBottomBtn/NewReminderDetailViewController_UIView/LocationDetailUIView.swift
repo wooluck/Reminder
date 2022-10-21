@@ -69,8 +69,8 @@ class LocationDetailUIView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        backgroundColor = .white
-        backgroundColor = .purple
+        backgroundColor = .green
+//        backgroundColor = .purple
         setupLayout()
     }
     
@@ -116,8 +116,7 @@ extension LocationDetailUIView {
         locationLabelView.snp.makeConstraints {
             $0.top.equalTo(underLine.snp.bottom).offset(50)
             $0.leading.equalToSuperview().inset(20)
-            //되나
-//            $0.height.equalTo(50)
+            $0.height.equalTo(100)
         }
     }
 }

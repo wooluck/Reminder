@@ -26,6 +26,11 @@ class NewReminderAddViewController: UIViewController {
     private let tableData = Observable.of(NewReminderAddDummy.map { $0 })
     private let tableDtailData = Observable.of(NewReminderDetailDummy.map { $0 })
     
+    // 텍스트필드 입력시 
+    let inputTitle = PublishRelay<String>()
+    let inputDescription = PublishRelay<String>()
+    let inputTrigger = PublishRelay<ActionType>()
+    
     private lazy var customNavigationItem = CustomNavigationItem(leftButtonText: "취소", rightButtonText: "추가", navigationTitleText: "새로운 미리 알림").then {
         if titleText.text?.count != 0 {
             $0.rightButton.isEnabled = false
@@ -85,6 +90,7 @@ class NewReminderAddViewController: UIViewController {
         bindTableView()
         bindView()
         setupLayout()
+        bindViewModel()
         
     }
 }
@@ -208,5 +214,11 @@ extension NewReminderAddViewController {
             $0.trailing.equalToSuperview()
             $0.height.equalTo(100)
         }
+    }
+    
+    func bindViewModel() {
+        let request = NewReminderAddViewModel().transform(input: )
+        
+        inputTrigger.accept(.start)
     }
 }

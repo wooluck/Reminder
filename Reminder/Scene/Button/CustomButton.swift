@@ -40,13 +40,6 @@ class CustomButton: UIButton {
         $0.font = .systemFont(ofSize: 26, weight: .bold)
     }
     
-    //    override init(frame: CGRect) {
-    //        super.init(frame: frame)
-    //        setupView()
-    //        setupLayout()
-    //        backgroundColor = .white
-    //    }
-    
     // MARK: - init()
     init(image: String, text: String, number: String, imageColor: String) {
         
